@@ -1,17 +1,32 @@
 const commandsData = {
   category1: {
-    icon: "📜",
-    title: "Category 1",
+    icon: "🎉",
+    title: "Giveaways",
     commands: [
       {
-        name: "/command1",
-        description: "Description of command1",
-        permission: "All",
+        name: "gstart",
+        description: "Starts a giveaway",
+        permission: "Manage Channel",
       },
       {
-        name: "/command2",
-        description: "Description of command2",
-        permission: "All",
+        name: "gdelete",
+        description: "Deletes a giveaway",
+        permission: "Manage Channel",
+      },
+      {
+        name: "greroll",
+        description: "Rerolls a giveaway",
+        permission: "Manage Channel",
+      },
+      {
+        name: "glist",
+        description: "List a giveaway users of recent giveaway",
+        permission: "Manage Channel",
+      },
+      {
+        name: "gend",
+        description: "Ends a giveaway",
+        permission: "Manage Channel",
       },
     ],
   },
