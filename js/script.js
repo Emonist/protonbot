@@ -134,8 +134,9 @@ category6: {
     { name: "vcbanall", description: "Ban all from VC", permission: "Ban Members" },
     { name: "vcunbanall", description: "Unban all from VC", permission: "Ban Members" },
     { name: "vcpull", description: "Pull a user into VC", permission: "Move Members" }
-  ],
-}
+    ],
+  },
+};
 
 
 function createCategoryButton(key, category) {
