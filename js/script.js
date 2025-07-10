@@ -657,46 +657,4 @@ document.getElementById("mobileMenu")?.addEventListener("click", (e) => {
 });
 
 
-// This code would run on a server (e.g., Glitch, Heroku, your own VPS)
-const Discord = require('discord.js');
-const express = require('express');
-const app = express();
-const client = new Discord.Client({
-    intents: [
-        Discord.GatewayIntentBits.Guilds,
-        Discord.GatewayIntentBits.GuildMembers, // Required to get total members
-        Discord.GatewayIntentBits.GuildPresences // Required for presence (online status)
-    ]
-});
 
-const YOUR_DISCORD_BOT_TOKEN = 'MTA0NTM3OTE3Nzk1MzYyNDEwNA.GRCicA.7qWs737WnB0BmCfzQkVHCEZsFsPuYQifhczxrQ'; // KEEP THIS SECRET!
-const YOUR_GUILD_ID = '1309143171749380107'; // Your server ID for PROTON HQ
-
-client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}!`);
-});
-
-app.get('/discord-stats', async (req, res) => {
-    try {
-        const guild = await client.guilds.fetch(YOUR_GUILD_ID);
-        await guild.members.fetch(); // Ensure all members are fetched
-
-        const totalMembers = guild.memberCount;
-        const onlineMembers = guild.presences.cache.filter(p => p.status !== 'offline').size;
-
-        res.json({
-            online: onlineMembers,
-            total: totalMembers
-        });
-    } catch (error) {
-        console.error("Error fetching guild stats:", error);
-        res.status(500).json({ error: "Could not fetch Discord stats" });
-    }
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
-
-client.login(YOUR_DISCORD_BOT_TOKEN);
